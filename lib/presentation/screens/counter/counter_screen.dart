@@ -6,20 +6,23 @@ class CounterScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: const Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text('10', style: TextStyle( fontSize: 140, fontWeight: FontWeight.w100 )),
-              Text('Clicks', style: TextStyle( fontSize: 25 ))
-            ],
-          ),
+      appBar: AppBar(
+        title: const Text('Counter Screen'),
+      ),
+      body: const Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text('10', style: TextStyle( fontSize: 140, fontWeight: FontWeight.w100 )),
+            Text('Clicks', style: TextStyle( fontSize: 25 ))
+          ],
         ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-          },
-          child: const Icon( Icons.plus_one ),
-        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+        },
+        child: const Icon( Icons.plus_one ),
+      ),
     );
   }
 }
