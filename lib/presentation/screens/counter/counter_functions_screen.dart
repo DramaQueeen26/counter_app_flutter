@@ -39,34 +39,53 @@ class _CounterFunctionsScreenState extends State<CounterFunctionsScreen> {
       floatingActionButton: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          FloatingActionButton(
-            shape: const StadiumBorder(),
+          CustomButton( 
+            icon: Icons.refresh_rounded,
+            onPressed: () {
+              clickCounter = 0;
+              setState(() {});
+            },
+            ),
+          const SizedBox( height: 10, ),
+          CustomButton( 
+            icon: Icons.plus_one,
             onPressed: () {
               clickCounter++;
-              setState((){});
+              setState(() {});
             },
-            child: const Icon( Icons.refresh_outlined ),
-          ),
+            ),
           const SizedBox( height: 10, ),
-          FloatingActionButton(
-            shape: const StadiumBorder(),
+          CustomButton( 
+            icon: Icons.exposure_minus_1_outlined, 
             onPressed: () {
-              clickCounter++;
-              setState((){});
-            },
-            child: const Icon( Icons.plus_one ),
-          ),
-          const SizedBox( height: 10, ),
-          FloatingActionButton(
-            shape: const StadiumBorder(),
-            onPressed: () {
+              if( clickCounter == 0 ) return;
               clickCounter--;
-              setState((){});
+              setState(() {});
             },
-            child: const Icon( Icons.exposure_minus_1_outlined ),
-          ),
+            ),
         ],
       ),
+    );
+  }
+}
+
+class CustomButton extends StatelessWidget {
+
+  final IconData icon;
+  final VoidCallback? onPressed;
+  
+  const CustomButton({
+    super.key, 
+    required this.icon, 
+    this.onPressed,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return FloatingActionButton(
+      shape: const StadiumBorder(),
+      onPressed: onPressed,
+      child: Icon( icon ),
     );
   }
 }
